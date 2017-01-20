@@ -31,7 +31,7 @@ export class StoriesComponent implements OnInit {
         this.pageNum = +params['page'] ? +params['page'] : 1;
         this._hackerNewsAPIService.fetchStories(this.storiesType, this.pageNum)
             .subscribe(
-                items => this.items = items,
+                items => {console.info(items); this.items = items;},
                 error => console.log('Error fetching ' + this.storiesType + ' stories'),
                 () => this.listStart = ((this.pageNum - 1) * 30) + 1);
     });
